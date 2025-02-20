@@ -107,7 +107,7 @@ Access the application in your web browser at `http://127.0.0.1:8000/`.
 
 ## Contributing
 
-Contributions are welcome! If you have any suggestions or improvements, feel free to open an issue or submit a pull request.
+Contributions are always welcome! If you have any suggestions or improvements, feel free to open an issue or submit a pull request. Also feel free to give this repository a star ⭐🌟
 
 1. Fork the repository.
 2. Create a new branch:
