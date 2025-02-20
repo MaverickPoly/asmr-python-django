@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block title %} Profile - {{user_profile.username}} {% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="max-w-7xl mx-auto my-6 px-4">
+  <div class="space-y-2">
+    <h2 class="text-4xl font-bold">{{ user_profile.username }}</h2>
+    {% if user.is_superuser %}
+    <h3 class="mb-5 text-xl text-green-600 font-semibold">Super User</h3>
+    {% endif %}
+    <h3 class="text-2xl font-semibold pb-3">Email: {{user_profile.email}}</h3>
+    {% if user == user_profile %}
+    <a
+      href="/logout"
+      class="rounded-full mt-3 bg-neutral-100 text-black px-5 py-2 border border-neutral-400 hover:bg-neutral-600 hover:text-white transition-colors"
+      >Logout</a
+    >
+    {% endif %}
+    <h4 class="mt-4 text-lg text-orange-600">
+      Total Books Borrowed: {{user_profile.borrowed_books.all|length}}
+    </h4>
+  </div>
+  <div class="mt-5">
+    <h2 class="text-xl text-indigo-700 font-semibold">Borrowed Books:</h2>
+    <div class="flex flex-wrap gap-x-4 gap-y-2 mt-3">
+      {% if user_profile.borrowed_books.all %}
+      <!--  -->
+      {% for book in user_profile.borrowed_books.all %}
+      <!--  -->
+      {% include "components/book_tile.html" with book=book %} {% endfor %}
+      <!--  -->
+      {% else %}
+      <span class="text-lg text-semibold ml-10">No Books borrowed yet...</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

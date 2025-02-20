@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Quote {% endblock %}
+
+{% block content %}
+<div class="formContainer">
+    <form method="POST">
+        <h1 class="title">New Quote</h1>
+        {% csrf_token %}
+        <textarea name="content" placeholder="Quote..." required></textarea>
+        <button type="submit" class="btn">
+            Create
+        </button>
+    </form>
+</div>
+{% endblock %}

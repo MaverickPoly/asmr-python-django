@@ -1,0 +1,45 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <title>{% block title %}Todo List{% endblock %}</title>
+</head>
+<body>
+
+<!-- NavBar -->
+<nav>
+    {% if user.is_authenticated %}
+        <a href="/">Home</a>
+        <a href="/create">Create</a>
+        <a href="/logout">Logout</a>
+        <a href="/profile">Profile</a>
+    {% else %}
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    {% endif %}
+</nav>
+
+<!-- Flashes (Messages) -->
+<ul class="flashes">
+    {% for message in messages %}
+        <li class="flash">{{message.tags|title}} - {{message}}</li>
+    {% endfor %}
+</ul>
+
+<!-- CSRF Token -->
+<input type="hidden" name="csrfmiddlewaretoken" value="{{csrf_token}}"/>
+
+<div class="main_block">
+{% block content %}
+{% endblock %}
+</div>
+
+<script type="text/javascript" src="{% static 'script.js' %}"></script>
+</body>
+</html>

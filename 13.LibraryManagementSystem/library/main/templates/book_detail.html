@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block title %} Book - {{book.title}} {% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="flex justify-between p-6 mx-4">
+  <div class="flex flex-col gap-1 items-start">
+    <h3 class="text-2xl font-semibold mb-2">{{book.title}}</h3>
+    <h4 class="text-md text-neutral-700">Published: {{book.written_date}}</h4>
+    <h4 class="text-md text-neutral-700">Since: {{book.uploaded_at}}</h4>
+    <h3 class="text-lg text-indigo-800 font-semibold mt-1">
+      Author: {{book.author}}
+    </h3>
+    <span class="px-3 py-1 bg-indigo-600 text-white rounded-lg my-2"
+      >{{book.tag|title}}</span
+    >
+    <span class="text-lg text-orange-700">
+      {% if book.borrower%}
+      <!--  -->
+      Borrowed by:
+      <a href="/profile/{{book.borrower.id}}" class="hover:underline"
+        >{{book.borrower.username}}</a
+      >{% else %}No borrower yet...
+      <!--  -->
+      {% endif %}</span
+    >
+  </div>
+  <div class="flex flex-col gap-4 items-end">
+    <a
+      href="{{book.file.url}}"
+      class="cursor-pointer px-4 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 text-center"
+      >Read</a
+    >
+    <a
+      href="{{book.file.url}}"
+      class="cursor-pointer px-4 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 text-center"
+      >Download</a
+    >
+    {% if book.borrower%}
+    <!--  -->
+    {% if book.borrower == user %}
+    <button
+      onclick="returnBook({{book.id}})"
+      class="cursor-pointer px-4 py-2 rounded-md text-white bg-orange-600 hover:bg-orange-700"
+    >
+      Return
+    </button>
+    {% endif %}
+    <!--  -->
+    {% else %}
+    <button
+      onclick="borrowBook({{book.id}})"
+      class="cursor-pointer px-4 py-2 rounded-md text-white bg-green-600 hover:bg-green-700"
+    >
+      Borrow
+    </button>
+    <!--  -->
+    {% endif %} {% if user.is_superuser %}
+    <!--  -->
+    <button
+      onclick="deleteBook({{book.id}})"
+      class="cursor-pointer px-4 py-2 rounded-md text-white bg-orange-600 hover:bg-orange-700"
+    >
+      Delete
+    </button>
+    {% endif %}
+    <a
+      href="/book/comments/{{book.id}}"
+      class="cursor-pointer px-4 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+    >
+      Comments
+    </a>
+  </div>
+</div>
+
+{% endblock %}

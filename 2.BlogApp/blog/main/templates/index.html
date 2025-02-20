@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+<!-- Block title  -->
+{% block title %} Browse {% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div>
+  <div class="flex gap-3 px-10 flex-wrap">
+    {% for post in posts %}
+    <!-- Post -->
+    {% include "components/post_tile.html" with post=post %} {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

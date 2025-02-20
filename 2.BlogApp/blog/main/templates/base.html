@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrftoken" content="{{ csrf_token }}" />
+    <title>{% block title %}Altair Blog{% endblock %}</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav
+      class="sticky top-0 left-1/2 bg-gray-200 flex justify-between max-w-4xl w-full mx-auto px-6 py-2 mt-3 rounded-lg items-center shadow-md z-50"
+    >
+      <a class="" href="/">
+        <img src="{% static 'img/logo.png' %}" class="w-10 h-10 rounded-lg" />
+      </a>
+      <div class="flex gap-5 items-center flex-1 justify-center">
+        {% if user.is_authenticated %}
+        <a class="text-lg hover:text-teal-600" href="/">Home</a>
+        <a class="text-lg hover:text-teal-600" href="/profile/{{user.id}}"
+          >Profile</a
+        >
+        <a class="text-lg hover:text-teal-600" href="/create_post/">Upload</a>
+        {% else %}
+        <a class="text-lg hover:text-teal-600" href="/auth/login">Login</a>
+        <a class="text-lg hover:text-teal-600" href="/auth/signup">Signup</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Block Content -->
+    <main class="main-screen mt-5">{% block content %} {% endblock %}</main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-gray-300 px-20 py-6 mt-4">
+      <div class="flex items-center justify-between px-6 pb-4">
+        <!-- Social Links -->
+        <div class="flex flex-row gap-5">
+          <a
+            class="text-3xl"
+            href="https://github.com/MaverickPoly"
+            target="_blank"
+            ><i class="fa fa-github" aria-hidden="true"></i
+          ></a>
+          <a
+            class="text-3xl"
+            href="https://www.instagram.com/altairetech/"
+            target="_blank"
+            ><i class="fa fa-instagram" aria-hidden="true"></i
+          ></a>
+          <a
+            class="text-3xl"
+            href="https://github.com/MaverickPoly"
+            target="_blank"
+            ><i class="fa fa-twitter" aria-hidden="true"></i
+          ></a>
+        </div>
+        <!-- Website links -->
+        <div class="flex gap-4">
+          <a class="text-gray-800 text-md hover:text-teal-600" href="/about"
+            >About</a
+          >
+          <a class="text-gray-800 text-md hover:text-teal-600" href="/contact "
+            >Contact</a
+          >
+        </div>
+      </div>
+      <div class="pt-5 border-t border-gray-200">
+        <h3 class="text-md text-gray-700 text-center">
+          2025 Altair Blog. All rights reserved.
+        </h3>
+      </div>
+    </footer>
+
+    <!-- Messages -->
+    <div
+      class="fixed bottom-0 left-0 right-0 max-w-xl mr-4 ml-auto my-2 flex flex-col gap-4 z-50"
+    >
+      {% for message in messages %}
+      <div class="w-full rounded-lg p-3 text-white text-md bg-teal-600">
+        {{message}}
+      </div>
+      {% endfor %}
+    </div>
+
+    <script src="{% static 'js/utils.js' %}"></script>
+  </body>
+</html>

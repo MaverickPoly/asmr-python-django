@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block title %} Register {% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="flex min-h-[80vh] w-full justify-center items-center">
+  <form
+    method="POST"
+    class="flex flex-col p-5 shadow-lg border border-indigo-200 bg-neutral-50 max-w-xl w-full mx-4 gap-y-4 rounded-lg shadow-indigo-200"
+  >
+    {% csrf_token %}
+    <h2 class="text-center text-3xl font-semibold mb-4">Create account.</h2>
+    <input
+      type="text"
+      name="username"
+      placeholder="Username..."
+      required
+      class="p-2 rounded-lg border border-neutral-200 outline-none focus:border-neutral-400"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email..."
+      required
+      class="p-2 rounded-lg border border-neutral-200 outline-none focus:border-neutral-400"
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password..."
+      required
+      class="p-2 rounded-lg border border-neutral-200 outline-none focus:border-neutral-400"
+    />
+    <input
+      type="password"
+      name="confirm_password"
+      placeholder="Confirm Password..."
+      required
+      class="p-2 rounded-lg border border-neutral-200 outline-none focus:border-neutral-400"
+    />
+    <button
+      class="mt-4 bg-indigo-600 hover:bg-indigo-700 hover:shadow-md text-white rounded-lg cursor-pointer p-2 text-lg"
+      type="submit"
+    >
+      Register.
+    </button>
+  </form>
+</div>
+
+{% endblock %}

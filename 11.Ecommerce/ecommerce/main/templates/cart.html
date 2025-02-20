@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <div>
+        <h1 class="text-3xl font-semibold mb-2">Shopping Cart:</h1>
+        <span class="text-2xl mb-4 font-semibold">Total: ${{total_price}}</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-3 gap-5">
+            {% for product in products %}
+                {% include "components/product_tile.html" with product=product cart=cart_ids %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

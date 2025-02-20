@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %}{{ quiz.title }}{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-100 py-6">
+  <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl w-full">
+    <!-- Quiz Info -->
+    <div class="mb-6 border-b pb-4">
+      <h2 class="text-3xl font-semibold text-gray-800">{{ quiz.title }}</h2>
+      <p class="text-gray-500">Created at: {{ quiz.created_at }}</p>
+      <p class="text-gray-600 font-medium">User: {{ quiz.user.username }}</p>
+      <p class="text-gray-700 font-bold">
+        Total Questions: {{ quiz.total_questions }}
+      </p>
+    </div>
+
+    <!-- Quiz Form -->
+    <form method="POST" action="{% url 'quiz-result' quiz.id %}">
+      {% csrf_token %} {% for question in questions %}
+      <div class="bg-gray-50 p-4 rounded-lg shadow-md mb-4">
+        <h3 class="text-lg font-semibold text-gray-800">
+          {{ question.question }}
+        </h3>
+
+        <div class="mt-2 space-y-2">
+          <label
+            class="flex gap-2 items-center bg-white p-2 rounded-md border border-gray-300 hover:bg-gray-100 cursor-pointer"
+          >
+            <input
+              type="radio"
+              name="question_{{ question.id }}"
+              value="1"
+              required
+              class="w-4 h-4 text-green-600"
+            />
+            <span class="text-gray-700">{{ question.answer_1 }}</span>
+          </label>
+
+          <label
+            class="flex gap-2 items-center bg-white p-2 rounded-md border border-gray-300 hover:bg-gray-100 cursor-pointer"
+          >
+            <input
+              type="radio"
+              name="question_{{ question.id }}"
+              value="2"
+              required
+              class="w-4 h-4 text-green-600"
+            />
+            <span class="text-gray-700">{{ question.answer_2 }}</span>
+          </label>
+
+          <label
+            class="flex gap-2 items-center bg-white p-2 rounded-md border border-gray-300 hover:bg-gray-100 cursor-pointer"
+          >
+            <input
+              type="radio"
+              name="question_{{ question.id }}"
+              value="3"
+              required
+              class="w-4 h-4 text-green-600"
+            />
+            <span class="text-gray-700">{{ question.answer_3 }}</span>
+          </label>
+
+          <label
+            class="flex gap-2 items-center bg-white p-2 rounded-md border border-gray-300 hover:bg-gray-100 cursor-pointer"
+          >
+            <input
+              type="radio"
+              name="question_{{ question.id }}"
+              value="4"
+              required
+              class="w-4 h-4 text-green-600"
+            />
+            <span class="text-gray-700">{{ question.answer_4 }}</span>
+          </label>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full bg-green-600 text-white py-3 px-4 rounded-lg text-lg font-semibold mt-4 hover:bg-green-700 transition"
+      >
+        Submit Quiz
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Notely {% endblock %}
+
+
+{% block content %}
+<div class="main">
+    <div class="box">
+        <h2>Your notes</h2>
+        <button class="btn danger" onclick="clearNotes()">
+            Clear
+        </button>
+    </div>
+    <div class="grid">
+        {% for note in user.notes.all %}
+            {% include 'note_tile.html' with note=note %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% load static %}
+
+<!-- Block title -->
+{% block title %}Create QUIZ{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <form
+    method="POST"
+    class="shadow-lg rounded-lg bg-white p-6 max-w-5xl w-full flex flex-col gap-6"
+  >
+    <h2 class="text-3xl text-center font-semibold">Create New Quiz</h2>
+    {% csrf_token %}
+
+    <div class="flex flex-col">
+      <label for="title" class="text-lg font-medium">Quiz Title:</label>
+      <input
+        type="text"
+        name="title"
+        required
+        class="p-3 rounded-lg border border-gray-300 focus:ring focus:ring-green-500"
+      />
+    </div>
+
+    <div class="flex flex-col">
+      <label for="total_questions" class="text-lg font-medium"
+        >Number of questions:</label
+      >
+      <input
+        type="number"
+        name="total_questions"
+        id="total_questions"
+        min="1"
+        required
+        class="p-3 rounded-lg border border-gray-300 focus:ring focus:ring-green-500"
+      />
+    </div>
+
+    <!-- Questions Container -->
+    <div
+      id="questions-container"
+      class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8"
+    ></div>
+
+    <button
+      type="submit"
+      class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition"
+    >
+      Create Quiz
+    </button>
+  </form>
+</div>
+
+<script src="{% static 'quiz_create.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+/* Selection Colors */
+::selection {
+  color: white;
+  background: rgb(0, 167, 0);
+  font-size: 50px;
+}

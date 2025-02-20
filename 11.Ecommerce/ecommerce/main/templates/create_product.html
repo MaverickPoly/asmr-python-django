@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen justify-center items-center">
+  <form
+      method="POST"
+      class="p-4 rounded-lg shadow-lg flex bg-neutral-100 gap-2 flex-col mx-3 max-w-[500px] w-full"
+      enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <h2 class="text-3xl mb-4">Create Product</h2>
+    <label for="name">Name</label>
+    <input
+        name="name"
+        id="name"
+        type="text"
+        placeholder="Name.."
+        required
+        class="p-2 rounded-lg border border-neutral-300 text-md outline-none focus:border-purple-600 mb-3"
+    />
+    <label for="description">Description</label>
+    <textarea
+        name="description"
+        id="description"
+        placeholder="Description..."
+        class="p-2 rounded-lg border border-neutral-300 text-md outline-none focus:border-purple-600 mb-3 h-[200px] resize-none"
+    ></textarea>
+    <div class="flex w-full">
+        <div class="flex-1">
+        <label for="price">Price</label>
+        <input
+          name="price"
+          id="price"
+          type="number"
+          placeholder="Price"
+          min="1"
+          class="p-2 rounded-lg border border-neutral-300 text-md outline-none focus:border-purple-600 mb-4"
+        />
+      </div>
+      <div class="flex-1">
+        <label for="quantity">Quantity</label>
+        <input
+            min="0"
+            name="quantity"
+            id="quantity"
+            placeholder="Quantity"
+            type="number"
+            class="p-2 rounded-lg border border-neutral-300 text-md outline-none focus:border-purple-600 mb-4"
+        />
+      </div>
+    </div>
+    <label for="image_file">Image File</label>
+        <input
+          type="file"
+          id="image_file"
+          name="image_file"
+          class="p-2 rounded-lg border border-neutral-300 text-md outline-none focus:border-purple-600 mb-4"
+        />
+    <button type="submit" class="bg-purple-700 text-white hover:bg-purple-800 rounded-lg p-2 cursor-pointer">
+      Create
+    </button>
+  </form>
+</div>
+{% endblock %}

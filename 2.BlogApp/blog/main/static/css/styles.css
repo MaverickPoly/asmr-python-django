@@ -1,0 +1,25 @@
+.main-screen {
+  min-height: 80vh;
+}
+
+textarea {
+  height: 150px;
+  resize: none;
+}
+
+.custom-overlay {
+  transform: translateY(-100%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-card:hover .custom-overlay {
+  transform: translateY(0);
+}
+
+#post-details-card {
+  max-width: 800px;
+}
+
+.max-w-7xl {
+  max-width: 1200px;
+}

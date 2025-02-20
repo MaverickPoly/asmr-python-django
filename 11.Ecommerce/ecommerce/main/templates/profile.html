@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block title %}Profile - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="min-h-[60vh] w-full flex justify-center items-center">
+    <div class="bg-neutral-100 rounded-lg shadow-xl flex flex-col max-w-[400px] w-full mx-4 p-6 items-center gap-4">
+        <h2 class="text-4xl font-semibold">{{ user.username }}</h2>
+        <h4 class="text-xl text-neutral-700">{{ user.email }}</h4>
+        <a href="/logout" class="text-lg px-3 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-white">
+            Logout
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+<!-- Block title  -->
+{% block title %} Edit Post {% endblock %}
+
+<!-- Block content -->
+{% block content %}
+
+<div class="flex w-full min-h-screen items-center justify-start">
+    <div class="bg-gradient-to-r from-green-200 to-green-400 w-full h-full absolute -z-10"></div>
+  <form method="POST" enctype="multipart/form-data" class="flex p-6 rounded-lg shadow-lg z-10 bg-white flex-col gap-2 ml-40">
+    <h2 class="text-3xl font-semibold mb-4 text-center">Edit Post.</h2>
+    {% csrf_token %}
+
+    <label for="title" class="text-lg">Title</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      placeholder="Title..."
+      class="p-2 rounded-lg mb-3 border border-gray-300 focus:border-teal-600 outline-none"
+      value="{{post.title}}"
+      required
+    />
+
+    <label for="content" class="text-lg">Content</label>
+    <textarea
+      name="content"
+      id="content"
+      placeholder="Content..."
+      class="p-2 rounded-lg mb-3 border border-gray-300 focus:border-teal-600 outline-none"
+      required
+    >
+{{post.content}}</textarea
+    >
+
+    <label for="image" class="text-lg">Image</label>
+    <input
+      type="file"
+      name="image"
+      accept="image/*"
+      id="image"
+      class="p-2 rounded-lg mb-3 border border-gray-300 focus:border-teal-600 outline-none"
+    />
+
+    <button type="submit" class="bg-gray-100 rounded-md text-lg text-gray-800 hover:text-white duration-300 border border-gray-300 hover:bg-teal-600 py-1">
+      Save changes
+    </button>
+  </form>
+
+    <div class="z-10 mx-auto bg-white p-6 rounded-xl flex flex-col">
+        <label for="image" class="text-xl mb-4 font-semibold">Current Image</label>
+        <img src="{{post.image.url}}" alt="Current Image" class="w-64 h-64 object-cover rounded-xl mb-3"/>
+    </div>
+
+</div>
+{% endblock %}

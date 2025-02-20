@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Update Note {% endblock %}
+
+
+{% block content %}
+<div class="formContainer">
+    <form method="POST">
+        <h2>Update the note.</h2>
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Title" value="{{note.title}}" />
+        <textarea name="content" placeholder="Content...">{{note.content}}</textarea>
+        <input type="text" name="tag" placeholder="Tag" value="{{note.tag}}" />
+        <button class="btn" type="submit">
+            Update
+        </button>
+    </form>
+</div>
+{% endblock %}

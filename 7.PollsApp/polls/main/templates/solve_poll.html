@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %}Poll - {{poll.title}} {% endblock %}
+
+<!-- Block content -->
+
+{% block content %}
+<div class="solve-poll">
+  <h2>{{poll.title}}</h2>
+
+  <form method="POST">
+    {% csrf_token %} {% for question in questions %}
+    <div>
+      <label>{{question.title}}</label>
+
+      <input type="text" name="question_{{question.id}}" required />
+      <br />
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn">Submit Poll</button>
+  </form>
+</div>
+{% endblock %}

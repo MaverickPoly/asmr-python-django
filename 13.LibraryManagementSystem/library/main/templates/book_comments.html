@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block title %} Comments - {{book.title}} {% endblock %}
+
+<!--  -->
+{% block content %}
+
+<div class="p-4">
+  <div>
+    <h2 class="text-3xl font-semibold text-indigo-700">
+      {{book.title}} - {{book.author }}
+    </h2>
+    <h3 class="mt-2 text-xl font-normal">Comments</h3>
+  </div>
+
+  <div
+    class="mt-8 gap-y-6 gap-x-4 grid grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4 xl:grid-cols-6 items-start"
+  >
+    {% for comment in book.comments.all %}
+    <!--  -->
+    {% include "components/comment_tile.html" with comment=comment %}
+    <!--  -->
+    {% endfor %}
+
+    <!--  -->
+  </div>
+  <div class="absolute bottom-0 left-0 w-full bg-neutral-100 mb-1 p-3">
+    <form method="POST" class="mx-8 flex gap-x-8 items-center">
+      {% csrf_token %}
+      <input
+        name="content"
+        class="flex-1 p-4 rounded-lg outline-none bg-white border border-neutral-300 focus:border-orange-700"
+        placeholder="Write your Comment.."
+      />
+      <button
+        type="submit"
+        class="py-3 md:py-4 px-3 md:px-5 text-sm md:text-lg bg-orange-700 rounded-md text-white cursor-pointer hover:bg-orange-800"
+      >
+        Comment
+      </button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+<!-- Pythonic_lenses_1QX3HvI -->

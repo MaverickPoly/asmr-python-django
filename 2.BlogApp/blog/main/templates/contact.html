@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %} Contact US {% endblock %}
+
+<!-- Block content -->
+
+{% block content %}
+<div
+  class="flex items-center justify-center max-w-7xl mx-auto flex-col lg:flex-row gap-5 my-16 bg-gray-200 p-4 py-8 rounded-lg"
+>
+  <div class="flex-1 flex flex-col items-center justify-center w-full px-4">
+    <h1 class="text-5xl font-semibold mb-3">Altair Blog</h1>
+    <div class="flex gap-1">
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center"
+      >
+        C
+      </h2>
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center"
+      >
+        o
+      </h2>
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center"
+      >
+        n
+      </h2>
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center"
+      >
+        t
+      </h2>
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center"
+      >
+        a
+      </h2>
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center"
+      >
+        c
+      </h2>
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center mr-3"
+      >
+        t
+      </h2>
+
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center"
+      >
+        U
+      </h2>
+      <h2
+        class="w-10 h-12 bg-teal-600 text-3xl text-white rounded-lg flex items-center justify-center"
+      >
+        S
+      </h2>
+    </div>
+    <p class="mt-4 text-md text-gray-800 text-center max-w-lg">
+      Provide your contact details to contact us, including email, name and
+      message you want to send to us. Do not hesitate to contact, we appreciate
+      all the feedbacks.
+    </p>
+  </div>
+  <form class="flex-1 flex flex-col gap-2 w-full px-4">
+    <label for="email" class="text-lg">Email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Email..."
+      class="mb-4 p-2 rounded-lg text-lg border border-gray-400 focus:border-teal-600 outline-none"
+      required
+    />
+    <label for="name" class="text-lg">Name</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="Name..."
+      class="mb-4 p-2 rounded-lg text-lg border border-gray-400 focus:border-teal-600 outline-none"
+      required
+    />
+    <label for="message" class="text-lg">Message</label>
+    <textarea
+      name="message"
+      id="message"
+      placeholder="Email..."
+      class="mb-4 p-2 rounded-lg text-lg border border-gray-400 focus:border-teal-600 outline-none"
+      required
+    ></textarea>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="flex min-h-[80vh] justify-center items-center">
+  <form method="POST" class="p-4 rounded-lg shadow-lg flex bg-neutral-100 gap-2 flex-col mx-3 max-w-[500px] w-full">
+    <h2 class="text-3xl font-semibold mb-4 text-center">Login now.</h2>
+    {% csrf_token %}
+    <input
+      name="email"
+      type="email"
+      placeholder="Email..."
+      class="p-2 rounded-lg border border-neutral-300 text-md outline-none focus:border-purple-600 mb-3"
+      required
+    />
+    <input
+      name="password"
+      type="password"
+      placeholder="Password..."
+      class="p-2 rounded-lg border border-neutral-300 text-md outline-none focus:border-purple-600 mb-3"
+      required
+    />
+    <button type="submit" class="mt-3 bg-purple-700 text-white hover:bg-purple-800 rounded-lg p-2 cursor-pointer">
+      Login
+    </button>
+  </form>
+</div>
+{% endblock %}

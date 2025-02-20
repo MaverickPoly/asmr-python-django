@@ -1,0 +1,16 @@
+
+<!-- Quote Tile Component -->
+ <div class="quote-tile">
+    <div>
+        <h3>{{quote.content}}</h3>
+        <h4>- {{quote.author.username}}</h4>
+        <h4>{{quote.created_at}}</h4>
+    </div>
+    <button class="fav" onclick="toggleFavourite({{quote.id}})">
+        {% if user in quote.favourited_by.all %}
+            Unlike
+        {% else %}
+            Like
+        {% endif %}
+    </button>
+</div>

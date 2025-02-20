@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <h2>Weather in {{city}}</h2>
+      <p>Temperature: {{temperature}}°C</p>
+      <p>Description: {{description}}</p>
+
+      {% if icon %}
+      <img
+        src="https://openweathermap.org/img/wn/{{icon}}.png"
+        alt="Weather Icon"
+      />
+      {% endif %}
+
+      <form method="GET">
+        <input type="text" name="city" placeholder="Enter city name" required />
+        <button type="submit">Get Weather</button>
+      </form>
+    </div>
+  </body>
+</html>

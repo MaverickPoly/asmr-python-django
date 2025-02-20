@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %} Who Solved {{poll.title}} {% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div class="poll-users">
+  <h2>Who solved "{{poll.title}}"</h2>
+
+  {% if completed_users %}
+  <ul>
+    {% for result in completed_users %}
+    <li>{{result.user.username}}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No users have completed this poll yet...</p>
+  {% endif %}
+</div>
+
+{% endblock %}

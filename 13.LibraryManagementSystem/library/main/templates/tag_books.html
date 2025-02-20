@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block title %} {{tag}} {% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="max-w-5xl mx-auto px-2">
+  <div class="py-12">
+    <h2 class="text-4xl font-semibold text-center text-indigo-800">
+      {{tag|title}}
+    </h2>
+  </div>
+  <div class="flex justify-start flex-wrap">
+    {% if books %} {% for book in books %}
+    <!--  -->
+    {% include "components/book_tile.html" with book=book %}
+    <!--  -->
+    {% endfor %} {% else %}
+    <div class="w-full">
+      <h2 class="text-lg text-center mt-10">
+        No books for this category yet...
+      </h2>
+    </div>
+
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

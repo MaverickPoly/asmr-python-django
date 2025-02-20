@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %} {{query}} {% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="max-w-5xl mx-auto">
+  <div class="py-10">
+    <h3
+      class="text-4xl font-bold bg-gradient-to-r from-indigo-800 to-indigo-50 bg-clip-text text-transparent w-auto"
+    >
+      Search Results for: {{query}}
+    </h3>
+  </div>
+  <div class="flex justify-start flex-wrap gap-3">
+    {% for book in books %}
+    <!--  -->
+    {% include "components/book_tile.html" with book=book %}
+    <!--  -->
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

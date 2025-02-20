@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %}Profile - {{user.username}}{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div class="profileContainer">
+  <div class="profileInfo">
+    <h2>{{user.username}}</h2>
+    <h3>{{user.email}}</h3>
+    <div>
+      <h4>{{user.completed_polls.all|length}} Polls answered</h4>
+      <h4>{{user.polls.all|length}} Polls created</h4>
+    </div>
+    <a href="/logout/" class="btn danger">Logout</a>
+  </div>
+  <div class="container">
+    <h2>Polls:</h2>
+    <div class="pollsContainer">
+      {% for poll in user.polls.all %}
+      <!--  -->
+      {% include "poll_tile.html" with poll=poll %} {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

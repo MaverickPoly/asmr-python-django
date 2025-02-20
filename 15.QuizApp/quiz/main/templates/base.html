@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Brainly{% endblock %}</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Nav Bar -->
+    <nav
+      class="sticky top-0 left-0 bg-white border-b border-neutral-300 w-full py-2 px-8 flex justify-between items-center mb-2"
+    >
+      <a class="text-2xl font-semibold text-green-800" href="/">Brainly</a>
+      <div class="flex gap-x-4">
+        {% if user.is_authenticated %}
+        <!-- IF -->
+        {% include "components/link.html" with text="Home" link="/" %}
+        <!--  -->
+        {% include "components/link.html" with text="About" link="/about" %}
+        <!--  -->
+        {% include "components/link.html" with text="Profile" link="/profile" %}
+        <!--  -->
+        {% include "components/link.html" with text="Create" link="/create" %}
+        {% else %}
+        <!-- ELSE -->
+        {% include "components/link.html" with text="Login" link="/login" %}
+        <!--  -->
+        {% include "components/link.html" with text="Signup" link="/register" %}
+        <!--  -->
+        {% endif %}
+      </div>
+      <a href="https://github.com/MaverickPoly" class="text-3xl"
+        ><i class="fa fa-github" aria-hidden="true"></i
+      ></a>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <!-- Messages -->
+    <div class="fixed bottom-0 left-0 right-0 mx-20 flex gap-3 my-2 flex-col">
+      {% for message in messages %}
+      <div class="w-full rounded-xl p-3 text-xl bg-green-200">{{message}}</div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

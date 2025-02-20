@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+<!-- Block title  -->
+{% block title %} Edit Profile {% endblock %}
+
+<!-- Block content -->
+{% block content %}
+
+<div>
+  <form method="POST" enctype="multipart/form-data">
+    <h2>Edit Profile.</h2>
+    {% csrf_token %}
+    <label for="bio">Bio</label>
+    <input
+      type="text"
+      name="bio"
+      id="bio"
+      placeholder="Bio..."
+      class=""
+      value="{{user.profile.bio}}"
+      required
+    />
+
+    <label for="city">City</label>
+    <input
+      type="text"
+      name="city"
+      id="city"
+      placeholder="City..."
+      class=""
+      value="{{user.profile.city}}"
+      required
+    />
+
+    <label for="profile_image">Profile Image</label>
+    <input
+      type="file"
+      name="email"
+      accept=""
+      id="profile_image"
+      placeholder="Profile Image..."
+      class=""
+      accept="image/*"
+      value="{{user.profile.profile_image.url}}"
+      required
+    />
+
+    <button type="submit" class="">Save Changes</button>
+  </form>
+</div>
+{% endblock %}

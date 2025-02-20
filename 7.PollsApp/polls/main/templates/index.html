@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %}Login{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div class="indexContainer">
+  <div class="infoContainer">
+    <h2>Most recent Polls:</h2>
+  </div>
+  <div class="pollsList">
+    {% for poll in polls %}
+    <!--  -->
+    {% include "poll_tile.html" with poll=poll %} {% endfor %}
+  </div>
+</div>
+{% endblock %}
