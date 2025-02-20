@@ -130,7 +130,7 @@ As you see, not all of the projects are implemented yet. The remaining 15 projec
 
 ## Screenshots
 
-Visuals of each project.
+Visuals of each project:
 
 ### 1.Personal Portfolio
 
