@@ -1,6 +1,6 @@
 # ASMR Python Django
 
-Welcome to the **ASMR-Python-Django** repository! This project is dedicated to creating 30 Django-based applications to enhance your web development skills. Below, you will find a list of projects with a brief description of each.
+Welcome to the **ASMR-Python-Django** repository! This project is dedicated to creating 30 Django-based applications to enhance your web development skills. Below, you will find a list of projects with a brief description of each!
 
 ## Table of Contents
 
