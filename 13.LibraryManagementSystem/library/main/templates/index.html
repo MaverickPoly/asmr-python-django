@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block title %} LibMan {% endblock %}
+
+<!--  -->
+{% block content %}
+<div class="max-w-5xl mx-auto px-3">
+  <div class="py-10">
+    <h1
+      class="text-4xl font-bold bg-gradient-to-r from-indigo-800 to-indigo-50 bg-clip-text text-transparent w-auto"
+    >
+      Choose books
+    </h1>
+    <p class="text-md text-neutral-700 pt-2">
+      Browse through out library and choose books you desire.
+    </p>
+    <div class="w-full flex justify-center mt-8">
+      <form
+        method="POST"
+        action="{% url 'search_book' %}"
+        class="w-[85%] flex gap-6 justify-center"
+      >
+        {% csrf_token %}
+        <input
+          name="query"
+          type="text"
+          placeholder="Search.."
+          class="flex-1 p-2 rounded-xl bg-white border-2 border-neutral-300 font-lg outline-none focus:border-neutral-500 focus:shadow-xl shadow-indigo-100/90"
+        />
+        <button
+          class="px-6 py-2 bg-indigo-500 hover:bg-indigo-600 cursor-pointer rounded-lg text-white"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+    <div class="flex gap-x-4 gap-y-2 mt-5 flex-wrap">
+      {% for value, label in category_choices %}
+      <a
+        href="/tag/{{value}}"
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full text-white"
+      >
+        {{label}}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="flex justify-start flex-wrap gap-3">
+    {% for book in books %}
+    <!--  -->
+    {% include "components/book_tile.html" with book=book %}
+    <!--  -->
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} {{user.username}} {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome, {{user.username}}</h1>
+    <h6>{{user.email}}</h6>
+    <a href="/logout" class="btn danger">Logout</a>
+    <div class="box">
+        <div class="user_quotes">
+            <h3>User's quotes:</h3>
+            {% for quote in user.quotes.all %}
+                {% include "tile.html" with quote=quote %}
+            {% endfor %}
+        </div>
+        <div class="vr" ></div>
+        <div class="fav-quotes">
+            <h3>User's favourite quotes:</h3>
+            {% for quote in user.favourite_quotes.all %}
+                {% include "tile.html" with quote=quote %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

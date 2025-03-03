@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Polls App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <!-- Messages -->
+    <div class="messages">
+      {% for message in messages %}
+      <div class="message">{{message}}</div>
+      {% endfor %}
+    </div>
+
+    <!-- NavBar -->
+    <nav>
+      <div class="links">
+        {% if user.is_authenticated %}
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/poll/create">Create</a>
+        {% else %}
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>{% block content %} {% endblock %}</main>
+
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

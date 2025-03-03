@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %}Create new poll{% endblock %}
+
+<!-- Block content -->
+
+{% block content %}
+<div class="formContainer">
+  <form method="POST">
+    {% csrf_token %}
+    <label for="title">Poll title:</label>
+    <input type="text" name="title" id="title" placeholder="Title.." required />
+
+    <h3>Questions:</h3>
+    <div id="questions-container"></div>
+
+    <div class="btns-container">
+      <button type="button" id="add-question">Add Question</button>
+      <button type="submit">Create Poll</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

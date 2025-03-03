@@ -1,0 +1,20 @@
+<a
+  class="rounded-md w-64 relative overflow-hidden h-64 hover-card"
+  href="/post/{{post.id}}/"
+>
+  <!-- Image -->
+  <img
+    src="{{post.image.url}}"
+    alt="{{post.title}}"
+    class="absolute top-0 left-0 w-full h-full object-cover"
+  />
+
+  <!-- Overlay Content -->
+  <div
+    class="absolute bg-white opacity-75 bottom-0 h-full w-full z-10 p-4 flex flex-col justify-center items-center custom-overlay"
+  >
+    <h2 class="text-lg font-semibold text-center">{{ post.title }}</h2>
+    <h3 class="text-md">{{ post.likes.all|length }} Likes</h3>
+    <h3 class="text-md">{{ post.author.user.username }}</h3>
+  </div>
+</a>

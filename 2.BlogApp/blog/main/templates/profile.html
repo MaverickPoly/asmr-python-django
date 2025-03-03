@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+<!-- Block title  -->
+{% block title %} Home {% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div class="max-w-6xl mx-auto my-12 flex flex-col">
+  <div class="mb-8 flex pb-8 border-b border-gray-400">
+    <img
+      src="{{current_user.profile.profile_image.url}}"
+      alt="Profile image: {{current_user.username}}"
+      class="h-64 w-64 rounded-full border border-gray-400 mr-10 object-cover"
+    />
+    <div class="">
+      <h2 class="text-4xl font-semibold">{{current_user.username}}</h2>
+      <div class="my-2 flex gap-4">
+        <h4 class="text-xl text-gray-800">{{current_user.email}}</h4>
+        <h4 class="text-xl text-gray-800">{{current_user.profile.city}}</h4>
+      </div>
+      <p class="text-gray-700 text-md">{{profile.bio}}</p>
+      <div class="mt-4">
+        {% if current_user == user %}
+        <a
+          href="/auth/logout/"
+          class="px-4 py-2 rounded-md text-white bg-red-500 hover:bg-red-600"
+          >Logout</a
+        >
+        {% else %}
+        <!--  -->
+        <button
+          onclick="followUnfollow({{ current_user.id }})"
+          id="follow-btn-{{current_user.id}}"
+          class="bg-teal-500 hover:bg-teal-600 text-white rounded-md px-4 py-2"
+        >
+          {% if user in profile.followers.all %} Unfollow {% else %}
+          <!--  -->
+          Follow {% endif %}
+        </button>
+        {% endif %}
+        <span
+          class="text-lg ml-4 text-teal-800"
+          id="followers-count-{{current_user.id}}"
+          >Followers: {{profile.followers.all|length}}</span
+        >
+        <a
+          class="font-semibold text-lg hover:underline ml-4"
+          href="/profile/{{current_user.id}}/followers/"
+          >Followers</a
+        >
+      </div>
+    </div>
+  </div>
+  <!-- User's posts -->
+  <div class="flex flex-wrap gap-3 mt-4">
+    {% for post in current_user.profile.posts.all %}
+    <!-- Post Tile -->
+    {% include "components/post_tile.html" with post=post %} {% endfor %}
+  </div>
+</div>
+{% endblock %}

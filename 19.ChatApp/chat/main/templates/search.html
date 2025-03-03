@@ -1,0 +1,60 @@
+{% extends "base_main.html" %}
+
+<!-- Block title -->
+{% block title %}Search{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<main class="max-w-6xl mx-auto my-6">
+  <form
+    method="GET"
+    class="flex flex-row items-center w-full py-4 px-10 bg-gray-100 rounded-md mb-8 gap-6"
+  >
+    <input
+      type="text"
+      name="query"
+      placeholder="Search here..."
+      class="p-2 rounded-md outline-none border bg-white border-gray-300 focus:border-amber-700 flex-1"
+    />
+    <select name="filter" class="px-4 py-2 rounded-md border border-gray-300">
+      <option value="users">Users</option>
+      <option value="chats">Chats</option>
+    </select>
+    <button
+      type="submit"
+      class="text-white bg-amber-700 hover:bg-amber-600 rounded-md py-2 px-6 text-lg"
+    >
+      Search
+    </button>
+  </form>
+  <div class="flex flex-wrap gap-3">
+    {% if users %} {% for current_user in users %}
+    <!--  -->
+    <a
+      class="w-full p-3 rounded-sm bg-white hover:bg-gray-50 flex gap-6 border border-gray-300"
+      href="{% url 'profile' user_id=current_user.id %}"
+    >
+      <img
+        src="{{current_user.profile.profile_image.url}}"
+        alt="{{current_user.username}}"
+        class="w-16 h-16 rounded-full object-cover"
+      />
+      <div class="flex flex-col items-start">
+        <h2 class="text-xl font-semibold">{{current_user.username}}</h2>
+        <h3 class="text-lg text-gray-700">{{current_user.email}}</h3>
+      </div>
+    </a>
+    {% endfor %} {% elif chats %} {% for chat in chats %}
+    <!--  -->
+    {% include "components/chat.html" with chat=chat %}
+    <!--  -->
+    {% endfor %} {% else %}
+    <div class="flex w-full flex-row justify-center items-center gap-6">
+      <span class="text-xl">Search for users or chats </span>
+      <i class="fa fa-search text-2xl"></i>
+    </div>
+    {% endif %}
+  </div>
+</main>
+
+{% endblock %}

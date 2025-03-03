@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1 class="title">Quotes</h1>
+    <div class="quotes">
+        {% for quote in quotes %}
+            {% include "tile.html" with quote=quote %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

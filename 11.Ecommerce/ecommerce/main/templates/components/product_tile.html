@@ -1,0 +1,41 @@
+<div class="h-[400px] w-full rounded-lg shadow-md relative overflow-hidden group">
+    <img
+        src="{{product.image_file.url}}"
+        class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/80 z-10 -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-white backdrop-blur-sm">
+        <div class="flex flex-col absolute top-2 right-2 gap-2">
+            {% if user.is_superuser %}
+                <button
+                    class="p-2 bg-white text-xl rounded-lg hover:bg-neutral-100 pointer-events-auto cursor-pointer"
+                    onclick=""
+                >
+                    🗑️
+                </button>
+            {% endif %}
+            {% if product.id in cart %}
+            <button
+                class="p-2 bg-red-300 text-xl rounded-lg hover:bg-red-400 pointer-events-auto cursor-pointer"
+                onclick="removeFromCart({{product.id}})"
+                aria-label="Add to cart"
+            >
+                🛒
+            </button>
+            {% else %}
+            <button
+                class="p-2 bg-white text-xl rounded-lg hover:bg-neutral-100 pointer-events-auto cursor-pointer"
+                onclick="addToCart({{product.id}})"
+                aria-label="Add to cart"
+            >
+                🛒
+            </button>
+            {% endif %}
+        </div>
+        <div class="absolute bottom-0 px-3 py-6">
+            <h2 class="text-2xl text-center">{{product.name}}</h2>
+            <p class="text-sm text-neutral-300 leading-4">{{product.description}}</p>
+            <h4 class="text-lg mt-2">${{product.price}}</h4>
+            <h5 class="text-lg">Items: {{product.quantity}}</h5>
+        </div>
+    </div>
+</div>

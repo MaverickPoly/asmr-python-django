@@ -1,0 +1,23 @@
+<a
+  class="border border-gray-300 p-2 hover:bg-gray-50 rounded-sm flex items-center w-full"
+  href="{% url 'chat' chat_id=chat.id %}"
+>
+  <img
+    src="{{ chat.chat_image.url }}"
+    alt="Image {{ chat.title }}"
+    class="w-10 h-10 object-cover rounded-full"
+  />
+  <div class="ml-5 flex-1">
+    <h2 class="text-lg">{{ chat.title }}</h2>
+    <h3 class="text-sm">{{ chat.participants.count }} Users</h3>
+  </div>
+
+  {% if request.user not in chat.participants.all %}
+  <button
+    class="bg-blue-500 text-white text-sm px-3 py-1 rounded-md hover:bg-blue-600 join-chat-btn"
+    onclick="registerToChat({{chat.id}})"
+  >
+    Join Chat
+  </button>
+  {% endif %}
+</a>

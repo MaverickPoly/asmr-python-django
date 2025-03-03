@@ -1,0 +1,23 @@
+{% extends "base_main.html" %}
+
+<!-- Block title -->
+{% block title %}Chatify{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<!--  -->
+{% if chats %}
+<!--  -->
+<div class="max-w-3xl mx-auto flex flex-col my-2">
+  {% for chat in chats %}
+  <!--  -->
+  {% include "components/chat.html" with chat=chat %}
+  <!--  -->
+  {% endfor %}
+</div>
+{% else %}
+<div class="flex items-center justify-center my-16 gap-6">
+  <h3 class="text-xl">You are not participating in any chats yet!</h3>
+  <i class="fa fa-ban text-5xl font-normal"></i>
+</div>
+{% endif %} {% endblock %}

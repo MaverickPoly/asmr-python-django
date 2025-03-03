@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+<!-- Block title  -->
+{% block title %} Create Post {% endblock %}
+
+<!-- Block content -->
+{% block content %}
+
+<div class="flex items-center justify-center">
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+    class="max-w-2xl w-full p-4 rounded-lg shadow-lg flex flex-col gap-3 my-10 bg-gray-100"
+  >
+    <h2 class="text-4xl text-center mb-2 text-teal-800 font-semibold">
+      Create new Post.
+    </h2>
+    {% csrf_token %}
+
+    <label for="title" class="text-lg">Title</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      placeholder="Title..."
+      class="p-2 text-lg border border-gray-300 hover:border-2 focus:border-teal-600 rounded-lg outline-none mb-2"
+      required
+    />
+
+    <label for="content" class="text-lg">Content</label>
+    <textarea
+      name="content"
+      id="content"
+      placeholder="Content..."
+      class="p-2 text-lg border border-gray-300 hover:border-2 focus:border-teal-600 rounded-lg outline-none mb-2"
+      required
+    ></textarea>
+
+    <label for="image" class="text-lg">Image</label>
+    <input
+      type="file"
+      name="image"
+      accept="image/*"
+      id="image"
+      class="p-2 border border-gray-300 hover:border-2 focus:border-teal-600 rounded-lg outline-none mb-2"
+      required
+    />
+
+    <button
+      type="submit"
+      class="bg-teal-700 hover:bg-teal-800 rounded-lg py-2 text-white text-lg mt-2"
+    >
+      Create Post
+    </button>
+  </form>
+</div>
+{% endblock %}

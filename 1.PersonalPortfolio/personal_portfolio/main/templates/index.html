@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="info">
+        <img src="{% static 'images/profile.jpg' %}" alt="profile image" />
+        <h3>Maverick Poly</h3>
+        <h4>Full Stack Developer</h4>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#hero">hero</a></li>
+          <li><a href="#about">about</a></li>
+          <li><a href="#skills">skills</a></li>
+          <li><a href="#education">education</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <button id="menu-btn"><i class="fa fa-bars"></i></button>
+
+    <section class="hero" id="hero">
+      {# {% lorem %} #}
+      <h3>Hi There!</h3>
+      <h1>I'M <span>Maverick Poly</span></h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+        exercitationem sunt aliquam eveniet ullam, illo, beatae quam aliquid
+        perspiciatis reprehenderit unde sed aspernatur quas suscipit quod
+        doloremque, quis mollitia numquam.
+      </p>
+      <a href="#about"
+        ><button class="btn">About Me <i class="fa-solid fa-user"></i></button
+      ></a>
+    </section>
+
+    <section class="about" id="about">
+      <h1 class="heading"><span>About</span> me</h1>
+      <div class="row">
+        <div class="info">
+          <h2 class="box">Name : <span>Maverick Poly</span></h2>
+          <h2 class="box">Age : <span>14</span></h2>
+          <h2 class="box">Qualification : <span>Awesome</span></h2>
+          <h2 class="box">Post : <span>Full stack Developer</span></h2>
+          <h2 class="box">Language : <span>English</span></h2>
+          <button class="btn">
+            Download CV<i class="fa-solid fa-download"></i>
+          </button>
+        </div>
+        <div class="box-container">
+          <div class="box">
+            <h3>6+</h3>
+            <h2>Years of experience</h2>
+          </div>
+          <div class="box">
+            <h3>200+</h3>
+            <h2>Projects Completed</h2>
+          </div>
+          <div class="box">
+            <h3>2+</h3>
+            <h2>Awards Won</h2>
+          </div>
+          <div class="box">
+            <h3>0</h3>
+            <h2>Happy Clients</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills" id="skills">
+      <h1 class="heading">My <span>skills</span></h1>
+      <div class="container">
+        <div class="box">
+          <img src="{% static 'images/python.png' %}" alt="Python" />
+        </div>
+        <div class="box">
+          <img src="{% static 'images/javascript.png' %}" alt="JavaScript" />
+        </div>
+        <div class="box">
+          <img src="{% static 'images/java.png' %}" alt="Java" />
+        </div>
+        <div class="box">
+          <img src="{% static 'images/cs.png' %}" alt="C#" />
+        </div>
+        <div class="box">
+          <img src="{% static 'images/python.png' %}" alt="Python" />
+        </div>
+        <div class="box">
+          <img src="{% static 'images/javascript.png' %}" alt="JavaScript" />
+        </div>
+      </div>
+    </section>
+
+    <section class="education" id="education">
+      <h1 class="heading">My <span>Education</span></h1>
+      <div class="container">
+        <div class="box">
+          <h3>2020</h3>
+          <h2>Full Stack Development</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            doloribus amet dignissimos officiis in cumque consequatur fugit
+            facilis vitae iste!
+          </p>
+          <div><i class="fa-solid fa-graduation-cap"></i></div>
+        </div>
+        <div class="box">
+          <h3>2021</h3>
+          <h2>Full Stack Development</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            doloribus amet dignissimos officiis in cumque consequatur fugit
+            facilis vitae iste!
+          </p>
+          <div><i class="fa-solid fa-graduation-cap"></i></div>
+        </div>
+        <div class="box">
+          <h3>2022</h3>
+          <h2>Full Stack Development</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            doloribus amet dignissimos officiis in cumque consequatur fugit
+            facilis vitae iste!
+          </p>
+          <div><i class="fa-solid fa-graduation-cap"></i></div>
+        </div>
+        <div class="box">
+          <h3>2023</h3>
+          <h2>Full Stack Development</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            doloribus amet dignissimos officiis in cumque consequatur fugit
+            facilis vitae iste!
+          </p>
+          <div><i class="fa-solid fa-graduation-cap"></i></div>
+        </div>
+        <div class="box">
+          <h3>2024</h3>
+          <h2>Full Stack Development</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            doloribus amet dignissimos officiis in cumque consequatur fugit
+            facilis vitae iste!
+          </p>
+          <div><i class="fa-solid fa-graduation-cap"></i></div>
+        </div>
+        <div class="box">
+          <h3>2025</h3>
+          <h2>Full Stack Development</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
+            doloribus amet dignissimos officiis in cumque consequatur fugit
+            facilis vitae iste!
+          </p>
+          <div><i class="fa-solid fa-graduation-cap"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h1 class="heading"><span>Contact</span> me</h1>
+      <div class="row">
+        <div class="info">
+          <h2>Contact info</h2>
+          <h3><i class="fa-solid fa-envelope"></i>myemail@example.com</h3>
+          <h3><i class="fa-solid fa-phone"></i>+123-456-7890</h3>
+          <h3><i class="fa-solid fa-phone"></i>+111-111-1111</h3>
+          <h3>
+            <i class="fa-solid fa-location-dot"></i>Earth, Country, Capital -
+            101010.
+          </h3>
+        </div>
+
+        <form>
+          <input type="text" name="name" placeholder="Name" />
+          <input type="email" name="email" placeholder="Email" />
+          <input type="text" name="project" placeholder="Project" />
+          <textarea rows="10" cols="30" placeholder="Message"></textarea>
+          <button type="submit" class="btn">
+            Send <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <script src="{% static 'script.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %}Signup{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+<div class="flex justify-center items-center w-full min-h-screen">
+  <form
+    class="p-4 rounded-lg shadow-lg flex gap-2 flex-col max-w-xl w-full my-10"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <h2 class="text-3xl font-bold mb-4 text-green-700 text-center">
+      Create account
+    </h2>
+    {% csrf_token %}
+
+    <label for="username" class="text-lg">Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      placeholder="Username"
+      class="p-2 rounded-lg mb-2 outline-none border border-gray-200 focus:border-green-600"
+      required
+    />
+
+    <label for="email" class="text-lg">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Email"
+      class="p-2 rounded-lg mb-2 outline-none border border-gray-200 focus:border-green-600"
+      required
+    />
+    <div class="flex flex-row gap-4">
+      <div class="flex-1">
+        <label for="password" class="text-lg">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          class="p-2 rounded-lg mb-2 outline-none border border-gray-200 focus:border-green-600 w-full"
+          required
+        />
+      </div>
+      <div class="flex-1">
+        <label for="confirm_password" class="text-lg">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm_password"
+          name="confirm_password"
+          class="p-2 rounded-lg mb-2 outline-none border border-gray-200 focus:border-green-600 w-full"
+          placeholder="Confirm Password"
+          required
+        />
+      </div>
+    </div>
+    <label for="bio" class="text-lg">About You</label>
+    <textarea
+      id="bio"
+      name="bio"
+      placeholder="Bio"
+      class="p-2 rounded-lg mb-2 outline-none border border-gray-200 focus:border-green-600 h-40 resize-none"
+      required
+    ></textarea>
+
+    <label for="profile_img" class="text-lg">Profile Picture</label>
+    <input
+      type="file"
+      id="profile_img"
+      name="profile_img"
+      accept="image/png, image/jpeg"
+      class="p-2 rounded-lg mb-2 outline-none border border-gray-200 focus:border-green-600"
+      required
+    />
+
+    <button
+      type="submit"
+      class="bg-green-600 hover:bg-green-700 text-white cursor-pointer rounded-lg py-2 text-lg"
+    >
+      Signup
+    </button>
+  </form>
+</div>
+{% endblock %}

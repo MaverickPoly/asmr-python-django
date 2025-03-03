@@ -1,0 +1,29 @@
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+*.db
+*.sqlite3-journal
+*.pyc
+.DS_Store
+.env
+*.env
+
+# Django Migrations
+**/migrations/
+**/__pycache__/
+**/staticfiles/
+
+# Specific IDE
+.idea/
+.vscode/
+.vscode/*
+
+# Environment
+env/
+venv/
+.venv/
+env.bak/
+venv.bak/

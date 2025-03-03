@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+<!-- Block title -->
+{% block title %}Brainly{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+<div class="max-w-6xl mx-auto px-2">
+  <h1
+    class="text-3xl bg-gradient-to-r from-green-900 to-green-400 text-transparent bg-clip-text mb-3 font-semibold"
+  >
+    Welcome to Brainly!
+  </h1>
+  <!-- All Quizzes -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4"
+  >
+    {% for quiz in quizzes %}
+    <!--  -->
+    {% include "components/quiz-tile.html" with quiz=quiz %}
+    <!--  -->
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

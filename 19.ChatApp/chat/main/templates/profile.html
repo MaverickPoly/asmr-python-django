@@ -1,0 +1,46 @@
+{% extends "base_main.html"%}
+
+<!-- Block title -->
+{% block title %}Profile - {{target_user.username}}{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div
+  class="max-w-2xl w-full mx-auto my-8 flex flex-col gap-4 items-start justify-start bg-gray-100 p-8"
+>
+  <div class="flex flex-row items-start justify-start">
+    <img
+      src="{{ target_user.profile.profile_image.url }}"
+      alt="{{target_user.username}}'s profile image"
+      class="rounded-full w-48 h-48 object-cover mr-10"
+    />
+    <div class="flex flex-col items-start justify-start">
+      <h4 class="text-3xl font-semibold mb-1">{{target_user.username}}</h4>
+      <h5 class="text-xl text-gray-700 mb-3">{{target_user.email}}</h5>
+      <h4 class="text-md text-gray-800">
+        Created at: {{target_user.profile.created_at}}
+      </h4>
+    </div>
+  </div>
+  <p class="text-md text-gray-800">{{target_user.profile.bio}}</p>
+  {% if target_user == user %}
+  <div class="flex gap-4">
+    <a
+      href="{% url 'logout' %}"
+      class="py-2 px-4 text-white bg-red-600 hover:bg-red-700 rounded-md text-lg"
+      >Logout</a
+    >
+    <a
+      href=""
+      class="py-2 px-4 text-white bg-amber-600 hover:bg-amber-700 rounded-md text-lg"
+      >Settings</a
+    >
+    <a
+      href="{% url 'change_password' %}"
+      class="py-2 px-4 text-white bg-orange-600 hover:bg-orange-700 rounded-md text-lg"
+      >Change Password</a
+    >
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

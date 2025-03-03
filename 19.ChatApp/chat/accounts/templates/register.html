@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+<!-- Block Title -->
+{% block title %} Register {% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+<div class="flex min-h-screen w-full items-center justify-center">
+  <form
+    method="post"
+    class="p-10 max-w-xl w-full flex shadow-lg rounded-md flex-col gap-4 my-10"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <h2 class="text-4xl font-bold mb-8 text-center text-amber-700">
+      Create an account
+    </h2>
+
+    <div class="flex gap-3 w-full">
+      <div class="flex flex-col flex-1">
+        <label for="username" class="text-lg">Username:</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username..."
+          class="p-2 rounded-md mb-3 border border-gray-200 focus:border-amber-700 outline-none"
+          required
+        />
+      </div>
+      <div class="flex flex-col flex-1">
+        <label for="email" class="text-lg">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email..."
+          class="p-2 rounded-md mb-3 border border-gray-200 focus:border-amber-700 outline-none"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="flex gap-3 w-full">
+      <div class="flex flex-col flex-1">
+        <label for="password" class="text-lg">Password:</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="p-2 rounded-md mb-3 border border-gray-200 focus:border-amber-700 outline-none"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div class="flex flex-col flex-1">
+        <label for="confirm_password" class="text-lg">Confirm Password:</label>
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          placeholder="Confirm Password..."
+          class="p-2 rounded-md mb-3 border border-gray-200 focus:border-amber-700 outline-none"
+          required
+        />
+      </div>
+    </div>
+    <label for="profile_image" class="text-lg">Profile Image:</label>
+    <input
+      type="file"
+      name="profile_image"
+      id="profile_image"
+      placeholder="Profile Image..."
+      accept="image/*"
+      class="p-2 rounded-md mb-3 border border-gray-200 focus:border-amber-700 outline-none"
+    />
+    <label for="bio" class="text-lg">Bio (optional):</label>
+    <textarea
+      name="bio"
+      id="bio"
+      placeholder="About You..."
+      class="p-2 rounded-md mb-3 resize-none border border-gray-200 focus:border-amber-700 outline-none h-32"
+    ></textarea>
+    <button
+      type="submit"
+      class="py-2 text-lg bg-amber-600 hover:bg-amber-700 rounded-md text-white cursor-pointer"
+    >
+      Register
+    </button>
+
+    <div class="mt-3 text-center">
+      <span class="mr-3">Already have an account?</span>
+      <a
+        href="{% url 'login' %}"
+        class="font-bold text-blue-600 hover:text-blue-700 hover:underline"
+        >Login</a
+      >
+    </div>
+  </form>
+</div>
+{% endblock %}

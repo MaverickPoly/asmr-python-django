@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="title">Welcome to todo list!</h1>
+
+    <ul class="todos-list">
+        {% for todo in todos %}
+            <li class="todo-tile {% if todo.completed %}completed{% endif %}" id="todo-{{todo.id}}">
+                <div class="content">
+                    <div>
+                        <input type="checkbox" {% if todo.completed %} checked {% endif %} onchange="toggleTodo({{todo.id}})"/>
+                        <h3>
+                            {{todo.title}}
+                        </h3>
+                    </div>
+                    <p>{{todo.description}}</p>
+                    <a class="link" href="/todo/{{todo.id}}">View</a>
+                </div>
+                <div>
+                    <button onclick="deleteTodo({{todo.id}})" class="btn danger">
+                        Delete
+                    </button>
+                    <a onclick="updateTodo({{todo.id}})" class="btn" href="/update/{{todo.id}}">
+                        Update
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

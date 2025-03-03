@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} Quote ID: {{quote.id}} {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>{{quote.content}}</h2>
+    <h3>{{quote.created_at}}</h3>
+    <h3>By: {{quote.user.username}}</h3>
+</div>
+{% endblock %}
