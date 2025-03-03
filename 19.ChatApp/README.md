@@ -28,7 +28,7 @@ There are basic prerequisites of this project. You need to know them before gett
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/MaverickPoly/asmr-python-flask.git
+git clone https://github.com/MaverickPoly/asmr-python-django.git
 ```
 
 2. Initialize new virtual environment (use **python3** instead of **python** in macos and linux):
