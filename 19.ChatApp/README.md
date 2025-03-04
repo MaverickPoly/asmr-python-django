@@ -56,9 +56,10 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Navigate to the project folder **(chat)** and run the project:
+4. Navigate to the project folder **19.ChatApp** - **(chat)** and run the project:
 
 ```bash
+cd 19.ChatApp
 cd chat
 ```
 
