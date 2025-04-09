@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from django.contrib import messages
 
-# Create your views here.
+
+
+def home(request):
+    context = {
+        # "messages": ["Hello world"]
+    }
+    return render(request, "home.html", context)

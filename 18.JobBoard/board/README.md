@@ -2,14 +2,14 @@
 
 ## Features to Implement
 
-### Accounts
+### Accounts (Authentication) ===========================================
 
 - Registrations (with type: job seeker or employer)
 - Login
 - Logout
 - Password Recovery
 
-### User
+### User ===========================================
 
 - Job seeker Profile (Public) (email, username, profile image, skills, bio, links)
 - Employer Profile (Public)(email, username, profile image, company name, description)

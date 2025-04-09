@@ -1,0 +1,86 @@
+{% load account_tags %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Job{% endblock %}</title>
+
+    <!-- Tailwind Css Link -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font awesome link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="flex w-full">
+      <!-- SideBar -->
+      <div class="h-screen fixed left-0 top-0 bg-neutral-100 px-2 w-72 py-5">
+        <h2 class="text-2xl text-emerald-800 font-bold">Dashboard</h2>
+
+        <div class="mt-8 flex flex-col items-start">
+          <a
+            href="/job/dashboard/"
+            class="px-4 py-2 rounded-md flex w-full gap-3 items-center hover:bg-neutral-200 font-semibold text-neutral-800 text-lg"
+          >
+            <i class="fa-solid fa-bars"></i>
+            <span>Dashboard</span></a
+          >
+          <a
+            href="/job/postings/all/"
+            class="px-4 py-2 rounded-md flex w-full gap-3 items-center hover:bg-neutral-200 font-semibold text-neutral-800 text-lg"
+          >
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Jobs Posts</span>
+          </a>
+
+          {% with user|get_user_account as account %}
+          <!-- IF -->
+          {% if account.account_type == "employer" %}
+          <!-- 
+            - create
+          -->
+          <a
+            href="/job/create/"
+            class="px-4 py-2 rounded-md flex w-full gap-3 items-center hover:bg-neutral-200 font-semibold text-neutral-800 text-lg"
+          >
+            <i class="fa-solid fa-plus"></i>
+            <span>Create</span>
+          </a>
+
+          <!-- Else -->
+          {% else %}
+          <!-- 
+            
+          -->
+          {% endif %} {% endwith %}
+          <!-- Back to Core -->
+          <a
+            href="/"
+            class="px-5 py-2 rounded-md flex w-full gap-3 items-center hover:bg-neutral-200 font-semibold text-neutral-800 text-lg"
+          >
+            <i class="fa-solid fa-caret-left"></i>
+            <span>Quit</span></a
+          >
+        </div>
+      </div>
+
+      <!-- Main Block -->
+      <div class="ml-74 w-full min-h-screen">
+        {% block content %} {% endblock %}
+      </div>
+    </div>
+
+    <!-- Messages -->
+    {% include "messages.html" with messages=messages %}
+
+    <script src="{% static 'job_script.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+{% extends "accounts/base.html" %}
+
+<!-- Block Title -->
+{% block title %}Register{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<form
+  class="flex flex-col lg:flex-row w-full gap-1 items-center bg-neutral-300"
+  method="post"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+  <!-- User Form -->
+  <div
+    class="flex flex-col gap-1 lg:flex-1 rounded-lg bg-neutral-50 p-10 justify-center h-screen"
+  >
+    <h2 class="text-center text-4xl font-bold mb-10">Personal Information</h2>
+
+    <div class="flex items-center gap-5 w-full">
+      <div class="w-full flex flex-col">
+        <label for="first_name" class="text-xl font-semibold mb-1"
+          >First Name</label
+        >
+        <input
+          type="text"
+          name="first_name"
+          id="first_name"
+          placeholder="Your First Name..."
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+          required
+        />
+      </div>
+
+      <div class="w-full flex flex-col">
+        <label for="last_name" class="text-xl font-semibold mb-1"
+          >Last Name</label
+        >
+        <input
+          type="text"
+          name="last_name"
+          id="last_name"
+          placeholder="Your Last Name..."
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+          required
+        />
+      </div>
+    </div>
+
+    <label for="username" class="text-xl font-semibold">Username</label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Your Username..."
+      class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+      required
+    />
+    <label for="email" class="text-xl font-semibold">Email Address</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Your Email..."
+      class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+      required
+    />
+
+    <div class="flex gap-3">
+      <div class="flex flex-col w-full">
+        <label for="password" class="text-xl font-semibold mb-1"
+          >Password</label
+        >
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Your Password..."
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col w-full">
+        <label for="confirm_password" class="text-xl font-semibold mb-1"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          name="confirm_password"
+          id="confirm_password"
+          placeholder="Enter Password again..."
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+          required
+        />
+      </div>
+    </div>
+
+    <label for="profileImage" class="text-xl font-semibold mb-1"
+      >Profile Image</label
+    >
+    <input
+      type="file"
+      accept="image/*"
+      name="profileImage"
+      id="profileImage"
+      placeholder="Profile Picture..."
+      class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+    />
+
+    <div class="flex gap-3 items-center justify-center mt-6">
+      <p class="text-lg text-neutral-8 00">Already have an account?</p>
+      <a
+        href="{% url 'login_view' %}"
+        class="text-lg text-blue-800 font-semibold hover:underline"
+        >Login</a
+      >
+    </div>
+  </div>
+
+  <!-- Account Form -->
+  <div
+    class="flex flex-col gap-1 w-full lg:flex-1 rounded-lg bg-neutral-50 p-7 justify-center h-screen overflow-scroll"
+  >
+    <h2 class="text-center text-4xl font-bold mb-10">Account Information</h2>
+
+    <div class="flex gap-4">
+      <div class="flex flex-col w-full">
+        <label for="account_type" class="text-xl font-semibold mb-1"
+          >Who are you?</label
+        >
+        <select
+          name="account_type"
+          id="account_type"
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+          required
+        >
+          <option value="employer" selected>Employer</option>
+          <option value="job_seeker">Job Seeker</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col w-full">
+        <label for="location" class="text-xl font-semibold mb-1"
+          >Where are you from?</label
+        >
+        <input
+          type="text"
+          name="location"
+          id="location"
+          placeholder="Your Location..."
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+          required
+        />
+      </div>
+    </div>
+
+    <label for="bio" class="text-xl font-semibold mb-1">About You</label>
+    <textarea
+      name="bio"
+      id="bio"
+      placeholder="Your Bio..."
+      class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white resize-none h-32"
+      required
+    ></textarea>
+
+    <div class="flex flex-col items-start w-full">
+      <label for="social_links" class="text-xl font-semibold mb-1"
+        >Social Links</label
+      >
+      <div id="links_container" class="grid grid-cols-3 gap-1 w-full"></div>
+
+      <button
+        id="social_link_add"
+        type="button"
+        class="px-4 py-2 bg-emerald-50 text-emerald-800 rounded-md cursor-pointer hover:bg-emerald-100"
+      >
+        Add
+      </button>
+    </div>
+
+    <!-- ============= Conditional Rendering -->
+    <div class="flex flex-col items-start w-full hidden" id="skills_field">
+      <label for="skills" class="text-xl font-semibold mb-1">Your Skills</label>
+      <div id="skills_container" class="grid grid-cols-3 gap-1 w-full"></div>
+
+      <button
+        id="skill_add"
+        type="button"
+        class="px-4 py-2 bg-emerald-50 text-emerald-800 rounded-md cursor-pointer hover:bg-emerald-100"
+      >
+        Add
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-1" id="organization_field">
+      <label for="organization" class="text-xl font-semibold mb-1"
+        >Your Organization?</label
+      >
+      <input
+        type="text"
+        name="organization"
+        id="organization"
+        placeholder="Your Organization..."
+        class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+        required
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="bg-emerald-600 hover:bg-emerald-700 mt-8 rounded-md cursor-pointer p-3 text-xl text-white"
+    >
+      Register
+    </button>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Board</title>
+
+    <!-- Tailwind Css Link -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+
+    <!-- Messages -->
+    <div class="fixed top-3 left-3 max-w-md w-full flex flex-col z-50 gap-3">
+      {% for message in messages %}
+      <!-- Info -->
+      {% if message.tags == "info" %}
+      <div
+        class="w-full bg-blue-500 rounded-lg px-5 py-3 text-xl text-white shadow-xl"
+      >
+        {{message}}
+      </div>
+      {% endif %}
+
+      <!-- Success -->
+      {% if message.tags == "success" %}
+      <div
+        class="w-full bg-emerald-600 rounded-lg px-5 py-3 text-xl text-white shadow-xl"
+      >
+        {{message}}
+      </div>
+      {% endif %}
+
+      <!-- Warning -->
+      {% if message.tags == "warning" %}
+      <div
+        class="w-full bg-orange-500 rounded-lg px-5 py-3 text-xl text-white shadow-xl"
+      >
+        {{message}}
+      </div>
+      {% endif %}
+
+      <!-- Error -->
+      {% if message.tags == "error" %}
+      <div
+        class="w-full bg-red-500 rounded-lg px-5 py-3 text-xl text-white shadow-xl"
+      >
+        {{message}}
+      </div>
+      {% endif %} {% endfor %}
+    </div>
+  </body>
+</html>

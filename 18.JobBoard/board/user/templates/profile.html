@@ -1,0 +1,106 @@
+{% extends "user/base.html" %}
+
+<!-- Block title -->
+{% block title %}Profile - {{current_user.username}}{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div class="flex w-full px-10 my-14 gap-14">
+  <!-- Left Info -->
+  <div class="w-[360px] h-screen flex flex-col items-center">
+    <img
+      src="{{account.profileImage.url}}"
+      alt="{{current_user.username}}'s profile Image"
+      class="w-72 h-72 rounded-full"
+    />
+    <div class="flex flex-col w-full px-4">
+      <h2 class="text-3xl font-normal text-neutral-700 mt-3">
+        {{current_user.username}}
+      </h2>
+      <h2 class="text-xl text-neutral-800">
+        {{current_user.first_name}} {{current_user.last_name}}
+      </h2>
+      <h3 class="text-xl font-semibold text-neutral-900 mt-2">
+        {{current_user.email}}
+      </h3>
+
+      <p class="text-sm font-semibold my-5 text-neutral-900">{{account.bio}}</p>
+
+      <!-- Skills -->
+      {% if account.account_type == "job_seeker" %}
+      <div class="flex flex-wrap gap-1">
+        {% for skill in account.skills %}
+        <span>{{skill}}</span>
+        {% endfor %}
+      </div>
+
+      {% endif %}
+
+      <!-- Edit Profile -->
+      {% if current_user == user %}
+      <a
+        href="/user/profile/edit/"
+        class="bg-neutral-100 hover:bg-neutral-200 border border-neutral-400 rounded-md w-full py-1 text-base text-center mb-6"
+        >Edit Profile</a
+      >
+      {% endif %}
+
+      <!-- Employer organization -->
+      {% if account.account_type == "employer" %}
+      <span class="flex gap-2 items-center mb-1">
+        <i class="fa-solid fa-building"></i>
+        <h5>{{account.organization}}</h5>
+      </span>
+      {% endif %}
+
+      <span class="flex gap-2 items-center mb-1">
+        <i class="fa-solid fa-user"></i>
+        <h5>{{account.account_type}}</h5>
+      </span>
+      <span class="flex gap-2 items-center mb-1">
+        <i class="fa-solid fa-location-dot"></i>
+        <h5>{{account.location}}</h5>
+      </span>
+
+      {% for link in account.links %}
+      <span class="flex gap-2 items-center mb-1">
+        <i class="fa-solid fa-link"></i>
+        {% if link|length > 40 %}
+        <a
+          href="{{link}}"
+          class="hover:text-blue-800 hover:underline"
+          target="_blank"
+          >{{link|slice:":40"}}...</a
+        >
+        {% else %}
+        <a
+          href="{{link}}"
+          class="hover:text-blue-800 hover:underline"
+          target="_blank"
+          >{{link|slice:":40"}}</a
+        >
+        {% endif %}
+      </span>
+      {% endfor %}
+
+      <!-- Logout Button -->
+      <a
+        href="/accounts/logout"
+        class="bg-red-600 hover:bg-red-700 text-white border border-red-800 rounded-md w-full py-2 text-base text-center mt-6"
+      >
+        <i class="fa-solid fa-arrow-right-from-bracket mr-1"></i>
+        Logout</a
+      >
+    </div>
+  </div>
+
+  <!-- Right Info -->
+  <div class="flex-1">
+    <!-- Top Tabs -->
+    <div></div>
+
+    <!-- Content -->
+    <h2>content goes here...</h2>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}User Profile{% endblock %}</title>
+
+    <!-- Tailwind Css Link -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- go to Dashboard button -->
+    <a
+      href="/"
+      class="flex fixed top-2 left-2 items-center bg-neutral-100 shadow-lg border border-neutral-300 rounded-full px-4 py-2 gap-2 hover:border-neutral-400 duration-200"
+    >
+      <i class="fas fa-arrow-left"></i>
+      <span>Go to dashboard </span>
+    </a>
+
+    {% block content %} {% endblock %}
+
+    <!-- Messages -->
+    {% include "messages.html" with messages=messages %}
+
+    <script src="{% static 'script.js' %}"></script>
+  </body>
+</html>

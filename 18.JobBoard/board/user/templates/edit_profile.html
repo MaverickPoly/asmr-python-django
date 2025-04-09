@@ -1,0 +1,170 @@
+{% extends "user/base.html" %}
+
+<!-- Block title -->
+{% block title %}Edit Profile{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+
+<form
+  class="flex flex-col lg:flex-row w-full gap-1 items-center bg-neutral-300"
+  method="post"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %}
+  <!-- User Form -->
+  <div
+    class="flex flex-col gap-1 lg:flex-1 rounded-lg bg-neutral-50 p-10 justify-center h-screen"
+  >
+    <h2 class="text-center text-4xl font-bold mb-10">Edit Profile</h2>
+
+    <div class="flex items-center gap-5 w-full">
+      <div class="w-full flex flex-col">
+        <label for="first_name" class="text-xl font-semibold mb-1"
+          >First Name</label
+        >
+        <input
+          type="text"
+          name="first_name"
+          id="first_name"
+          placeholder="Your First Name..."
+          value="{{current_user.first_name}}"
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+          required
+        />
+      </div>
+
+      <div class="w-full flex flex-col">
+        <label for="last_name" class="text-xl font-semibold mb-1"
+          >Last Name</label
+        >
+        <input
+          type="text"
+          name="last_name"
+          id="last_name"
+          placeholder="Your Last Name..."
+          value="{{current_user.last_name}}"
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+          required
+        />
+      </div>
+    </div>
+
+    <label for="profileImage" class="text-xl font-semibold mb-1"
+      >Profile Image</label
+    >
+    <input
+      type="file"
+      accept="image/*"
+      name="profileImage"
+      id="profileImage"
+      placeholder="Profile Picture..."
+      class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+    />
+
+    <label for="location" class="text-xl font-semibold mb-1"
+      >Where are you from?</label
+    >
+    <input
+      type="text"
+      name="location"
+      id="location"
+      placeholder="Your Location..."
+      value="{{account.location}}"
+      class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+      required
+    />
+  </div>
+
+  <!-- Account Form -->
+  <div
+    class="flex flex-col gap-1 w-full lg:flex-1 rounded-lg bg-neutral-50 p-7 justify-center h-screen overflow-scroll"
+  >
+    <h2 class="text-center text-4xl font-bold mb-10">Edit Account</h2>
+
+    <label for="bio" class="text-xl font-semibold mb-1">About You</label>
+    <textarea
+      name="bio"
+      id="bio"
+      placeholder="Your Bio..."
+      class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white resize-none h-32"
+      required
+    >
+{{account.bio}}</textarea
+    >
+
+    <div class="flex flex-col items-start w-full">
+      <label for="social_links" class="text-xl font-semibold mb-1"
+        >Social Links</label
+      >
+      <div id="links_container" class="grid grid-cols-3 gap-1 w-full">
+        {% for link in account.links %}
+        <input
+          type="text"
+          placeholder="New social link..."
+          name="social_links"
+          value="{{link}}"
+          class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-sm bg-white flex-1 mr-2"
+          required
+        />
+        {% endfor %}
+      </div>
+
+      <button
+        id="social_link_add"
+        type="button"
+        class="px-4 py-2 bg-emerald-50 text-emerald-800 rounded-md cursor-pointer hover:bg-emerald-100"
+      >
+        Add
+      </button>
+    </div>
+
+    <!-- ============= Conditional Rendering -->
+    <div class="flex flex-col items-start w-full hidden" id="skills_field">
+      <label for="skills" class="text-xl font-semibold mb-1">Your Skills</label>
+      <div id="skills_container" class="grid grid-cols-3 gap-1 w-full">
+        {% for skill in account.skills %}
+        <input
+          type="text"
+          placeholder="Enter new skill..."
+          name="skill_{{forloop.counter0}}"
+          value="{{skill}}"
+          className="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-sm bg-white flex-1 mr-2"
+          required
+        />
+        {% endfor %}
+      </div>
+
+      <button
+        id="skill_add"
+        type="button"
+        class="px-4 py-2 bg-emerald-50 text-emerald-800 rounded-md cursor-pointer hover:bg-emerald-100"
+      >
+        Add
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-1" id="organization_field">
+      <label for="organization" class="text-xl font-semibold mb-1"
+        >Your Organization?</label
+      >
+      <input
+        type="text"
+        name="organization"
+        id="organization"
+        placeholder="Your Organization..."
+        value="{{account.organization}}"
+        class="rounded-md border border-neutral-300 focus:border-neutral-500 mb-5 p-2 outline-none text-lg bg-white"
+        required
+      />
+    </div>
+
+    <button
+      type="submit"
+      class="bg-emerald-600 hover:bg-emerald-700 mt-8 rounded-md cursor-pointer p-3 text-xl text-white"
+    >
+      Save Changes
+    </button>
+  </div>
+</form>
+{% endblock %}

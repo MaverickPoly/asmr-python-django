@@ -1,0 +1,69 @@
+{% extends "job/base.html" %}
+
+<!-- Block title -->
+{% block title %}Create Job Post{% endblock %}
+
+<!-- Block content -->
+{% block content %}
+<div class="flex w-full h-full items-center justify-center bg-red-200">
+  <form
+    method="post"
+    class="flex flex-col rounded-lg shadow-lg p-4 bg-neutral-100 max-w-xl w-full gap-1 my-4"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+
+    <h2 class="text-3xl font-semibold text-center mb-6">Create Job</h2>
+
+    <label for="title" class="text-lg text-neutral-700">Post Title</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      placeholder="Title..."
+      class="bg-white p-2 rounded-lg w-full outline-none border border-neutral-300 focus:border-emerald-600 mb-3"
+    />
+
+    <label for="description" class="text-lg text-neutral-700"
+      >Post Description</label
+    >
+    <textarea
+      name="description"
+      id="description"
+      placeholder="Description..."
+      class="bg-white p-2 rounded-lg w-full outline-none border border-neutral-300 focus:border-emerald-600 mb-3 h-[140px] resize-none"
+    ></textarea>
+
+    <label for="image" class="text-lg text-neutral-700">Post Image</label>
+    <input
+      type="file"
+      accept="image/*"
+      name="image"
+      id="image"
+      placeholder="Image..."
+      class="bg-white p-2 rounded-lg w-full outline-none border border-neutral-300 focus:border-emerald-600 mb-3"
+    />
+
+    <div>
+      <label for="tags" class="text-lg text-neutral-700">Post Tags</label>
+
+      <div id="tags-container" class="grid grid-cols-3 gap-3"></div>
+
+      <button
+        id="add-tag"
+        type="button"
+        class="p-2 rounded-md bg-emerald-200 hover:bg-emerald-300 text-neutral-800 cursor-pointer mt-2"
+      >
+        Add Tag
+      </button>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full rounded-lg text-white bg-emerald-600 hover:bg-emerald-700 p-2 text-lg mt-4"
+    >
+      Create
+    </button>
+  </form>
+</div>
+{% endblock %}
